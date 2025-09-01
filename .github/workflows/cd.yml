@@ -38,7 +38,7 @@ jobs:
         run: curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
 
       - name: Smoke check (optional)
-        if: ${{ secrets.DEPLOY_URL != '' }}
+        if: ${{ env.DEPLOY_URL != '' }}
         run: |
           echo "Wait for app to boot…"
           sleep 15
