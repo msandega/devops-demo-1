@@ -34,9 +34,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Trigger Render deploy
-        run: curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
-
       - name: Smoke check (optional)
         if: ${{ env.DEPLOY_URL != '' }}
         run: |
