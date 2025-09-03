@@ -31,9 +31,11 @@ GitHub Actions CI/CD:
 <h2>**Deployment**</h2>
 
 Live app: (https://devops-demo-1-vcmm.onrender.com/health)
+
+
 Health check: (https://devops-demo-1-vcmm.onrender.com/health)
 
 
 
 ![CI](https://github.com/msandega/devops-demo-1/actions/workflows/ci.yml/badge.svg)
-[![CI/CD](https://github.com/msandega/devops-demo-1/actions/workflows/cd.yml/badge.svg)]
+![CI/CD](https://github.com/msandega/devops-demo-1/actions/workflows/cd.yml/badge.svg)
