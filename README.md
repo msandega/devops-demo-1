@@ -39,4 +39,4 @@ Health check: (https://devops-demo-1-vcmm.onrender.com/health)
 
 
 ![CI](https://github.com/msandega/devops-demo-1/actions/workflows/ci.yml/badge.svg)
-![CI/CD](https://github.com/msandega/devops-demo-1/actions/workflows/cd.yml/badge.svg?branch=feature%2Fci-setup)
+![CI](https://github.com/msandega/devops-demo-1/actions/workflows/ci.yml/badge.svg)
