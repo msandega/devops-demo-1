@@ -1,8 +1,10 @@
-name: CD
+name: CI/CD
 
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "dev" ]
 
 permissions:
   contents: read
@@ -11,6 +13,9 @@ permissions:
 jobs:
   build_push_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_URL: ${{ secrets.DEPLOY_URL }}   # ✅ set once here
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,11 +40,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+      - name: Trigger Render deploy
+        run: curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+
       - name: Smoke check (optional)
-        if: ${{ env.DEPLOY_URL != '' }}
+        if: env.DEPLOY_URL != ''    # ✅ check env, not secrets
         run: |
-          echo "Wait for app to boot…"
+          echo "⏳ Waiting for app to boot…"
           sleep 15
           curl -fsS "$DEPLOY_URL/health" || exit 1
-        env:
-          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
